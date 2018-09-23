@@ -1,13 +1,13 @@
 /* Price area css
 ============================================================================================ */
-.pricing_area{
+.pricing_area {
     background: url(../img/price-bg.jpg) no-repeat scroll center center;
     background-size: cover;
     position: relative;
     padding: 100px 0px;
-    &:before{
+
+    &:before {
         content: "";
-        background-image: -webkit-linear-gradient(150deg, #000000 0%, #000000 100%);
         position: absolute;
         left: 0px;
         top: 0px;
@@ -15,33 +15,38 @@
         height: 100%;
         opacity: .70;
     }
-    &.purple_price{
-        .pricing_item{
-            h3{
+
+    &.purple_price {
+        .pricing_item {
+            h3 {
                 font-size: 20px;
                 text-transform: uppercase;
                 font-family: $mon;
                 font-weight: 400;
                 color: #fff;
             }
-            h2{
+
+            h2 {
                 font-size: 48px;
                 color: $mainColor;
                 font-family: $mon;
                 font-weight: 400;
                 padding: 25px 0px 18px 0px;
             }
-            h4{
+
+            h4 {
                 font-size: 14px;
                 font-family: $mon;
                 color: #716776;
                 font-weight: 400;
                 padding-bottom: 35px;
             }
-            ul{
+
+            ul {
                 padding-bottom: 30px;
-                li{
-                    a{
+
+                li {
+                    a {
                         color: #fff;
                         font-family: $mon;
                         border-top: 1px solid #7a5c6a;
@@ -52,8 +57,9 @@
                         line-height: 50px;
                         @include transition;
                     }
-                    &:hover{
-                        a{
+
+                    &:hover {
+                        a {
                             color: $mainColor;
                         }
                     }
