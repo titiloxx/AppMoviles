@@ -22,8 +22,6 @@ namespace LavaWeb
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").IncludeDirectory("~/Content", "*.css", true));
-
         }
     }
 }
