@@ -203,20 +203,25 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\animate.css" />
-    <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
-    <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\responsive.css" />
     <Content Include="css\style.css" />
-    <Content Include="css\themify-icons.css" />
+    <Content Include="css\_banner.css" />
+    <Content Include="css\_blog.css" />
+    <Content Include="css\_button.css" />
+    <Content Include="css\_clients.css" />
+    <Content Include="css\_contact.css" />
+    <Content Include="css\_footer.css" />
+    <Content Include="css\_header.css" />
+    <Content Include="css\_price.css" />
+    <Content Include="css\_service.css" />
+    <Content Include="css\_slider.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\Linearicons-Free.svg" />
     <Content Include="Global.asax" />
-    <Content Include="css\SiteMain.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -476,16 +481,18 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\Linearicons-Free.eot" />
-    <Content Include="fonts\Linearicons-Free.ttf" />
-    <Content Include="fonts\Linearicons-Free.woff" />
-    <Content Include="fonts\Linearicons-Free.woff2" />
+    <Content Include="css\.DS_Store" />
     <Content Include="css\style.css.map" />
-    <Content Include="img\.DS_Store" />
-    <Content Include="img\benefits\.DS_Store" />
-    <Content Include="img\blog\.DS_Store" />
-    <Content Include="img\feature-m-slider\.DS_Store" />
-    <Content Include="js\.DS_Store" />
+    <Content Include="css\_banner.css.map" />
+    <Content Include="css\_blog.css.map" />
+    <Content Include="css\_button.css.map" />
+    <Content Include="css\_clients.css.map" />
+    <Content Include="css\_contact.css.map" />
+    <Content Include="css\_footer.css.map" />
+    <Content Include="css\_header.css.map" />
+    <Content Include="css\_price.css.map" />
+    <Content Include="css\_service.css.map" />
+    <Content Include="css\_slider.css.map" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -495,6 +502,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="img\.DS_Store" />
+    <Content Include="img\benefits\.DS_Store" />
+    <Content Include="img\blog\.DS_Store" />
+    <Content Include="img\feature-m-slider\.DS_Store" />
+    <Content Include="js\.DS_Store" />
     <None Include="packages.config" />
     <Content Include="vendors\.DS_Store" />
     <Content Include="vendors\flipster\.DS_Store" />
@@ -528,20 +540,6 @@
     <Content Include="vendors\themify-icon\fonts\themify.eot" />
     <Content Include="vendors\themify-icon\fonts\themify.ttf" />
     <Content Include="vendors\themify-icon\fonts\themify.woff" />
-    <Content Include="scss\.DS_Store" />
-    <Content Include="scss\style.scss" />
-    <Content Include="scss\_banner.scss" />
-    <Content Include="scss\_blog.scss" />
-    <Content Include="scss\_button.scss" />
-    <Content Include="scss\_clients.scss" />
-    <Content Include="scss\_contact.scss" />
-    <Content Include="scss\_footer.scss" />
-    <Content Include="scss\_header.scss" />
-    <Content Include="scss\_predefin.scss" />
-    <Content Include="scss\_price.scss" />
-    <Content Include="scss\_service.scss" />
-    <Content Include="scss\_slider.scss" />
-    <Content Include="scss\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
