@@ -26,5 +26,12 @@ namespace LavaWeb.Controllers
 
             return View();
         }
+
+        public ActionResult BuscarProductos()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

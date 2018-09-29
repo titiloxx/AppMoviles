@@ -406,3 +406,7 @@ C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.csproj.CoreCompileIn
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.csproj.CopyComplete
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.dll
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.pdb
+C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\net-sdk.dll
+C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\RestSharp.dll
+C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\net-sdk.pdb
+C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\RestSharp.xml
