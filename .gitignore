@@ -1,3 +1,6 @@
 
 .vs/*
 .vs/config/applicationhost.config
+*.dll
+LavaWeb/bin/LavaWeb.dll
+LavaWeb/bin/LavaWeb.dll
