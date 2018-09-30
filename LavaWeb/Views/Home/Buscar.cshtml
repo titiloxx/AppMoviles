@@ -5,18 +5,56 @@
 }
 
 <div class="main_title our_service_area">
-    <h2 style="color: #0084b4;">Buscar productos</h2>
+    <h2 style="color: #0084b4;">Productos</h2>
 </div>
 
+<form class="form-inline row padding-lg" action="/home/buscar" method="get" style="margin-bottom: 20px;">
+
+    <br>
+    <br>
+    <div id="top" class="col-md-8 padding-md">
+        <div class="col-md-6 field col-xs-12">
+            <h4 id="h4" style="display:inline-block;">Filtrar: </h4>
+            <div style="display: inline-block;">
+                <input style="margin-left:15px;" class="btn btn-warning" type="submit" value="CSGO">
+                <input style="margin-left:15px;" class="btn btn-warning" type="submit" value="PUBG">
+                <input style="margin-left:15px;" class="btn btn-warning" type="submit" value="Fortnite">
+            </div>
+        </div>
+        <div class="col-md-6 field col-xs-12 padding-md">
+
+            <input type="number" id="min" name="min" class="myFilter min form-control input input-group" aria-controls="tabla" style="width:80px;display:inline-block;margin-top: 0px;" placeholder="Min">
+            <input style="width:80px;display:inline-block;" type="number" name="max" id="max" class="myFilter max form-control input input-group" aria-controls="tabla" placeholder="Max">
+        </div>
+    </div>
+    <div class="col-md-4 padding-md">
+        <div class="col-md-6 col-xs-12">
+            <h4 id="h4" style="display:inline-block;">Dias publicado &lt;</h4> <input style="width:70px;" type="number" name="dias" id="dias" class="myFilter dias form-control input input-group" aria-controls="tabla" value="999">
+        </div>
+        <div class="col-md-5 col-xs-12 padding-md">
+            <h4>Cantidad Total:</h4>
+        </div>
+    </div>
+</form>
+
 <div class="row tableHeader">
-        <div class="col-md-3 col-xs-3 tableCell">Producto</div>
-        <div class="col-md-3 col-xs-3 tableCell">Precio</div>
-        <div class="col-md-3 col-xs-3 tableCell">Comprar</div>
-        <div class="col-md-3 col-xs-3 tableCell">Compartir</div>
+    <div class="col-md-3 col-xs-3 ">Producto</div>
+    <div class="col-md-3 col-xs-3 ">Precio</div>
+    <div class="col-md-3 col-xs-3 ">Publicado hace</div>
+    <div class="col-md-3 col-xs-3 ">Compartir</div>
 </div>
+@foreach (WebApplication6.Models.Record item in Model)
+{
 <div class="row rowTable">
-        <div class="col-md-3 col-xs-3 tableCell">1</div>
-        <div class="col-md-3 col-xs-3 tableCell">2</div>
-        <div class="col-md-3 col-xs-3 tableCell">3</div>
-        <div class="col-md-3 col-xs-3 tableCell">4</div>
+    <div class="col-md-3 col-xs-3 tableCell">@item.nombre</div>
+    <div class="col-md-3 col-xs-3 tableCell">$ @item.precio</div>
+    <div class="col-md-3 col-xs-3 tableCell">@item.diasC dias</div>
+    <div class="col-md-3 col-xs-3 tableCell"><a class="pointer share" onclick="confirmar('Municipalidadad Vla',14360)"> <div class="glyphicon glyphicon-share"></div></a></div>
+</div>
+}
+
+
+<div class="col-md-4 derecha">
+    <button type="button" class="btn btn-success derecha"><div class="glyphicon glyphicon-chevron-right"></div></button>
+    <button type="button" class="btn btn-success derecha"><div class="glyphicon glyphicon-chevron-left"></div></button>
 </div>
