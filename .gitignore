@@ -1,3 +1,11 @@
 
 .vs/*
 .vs/config/applicationhost.config
+LavaWeb/bin/LavaWeb.dll
+LavaWeb/bin/LavaWeb.dll
+LavaWeb/bin/LavaWeb.pdb
+LavaWeb/obj/Debug/LavaWeb.csproj.CoreCompileInputs.cache
+LavaWeb/obj/Debug/LavaWeb.csproj.FileListAbsolute.txt
+LavaWeb/obj/Debug/LavaWeb.csprojAssemblyReference.cache
+LavaWeb/obj/Debug/LavaWeb.dll
+LavaWeb/obj/Debug/LavaWeb.pdb

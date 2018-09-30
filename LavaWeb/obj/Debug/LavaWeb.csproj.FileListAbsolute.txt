@@ -410,3 +410,5 @@ C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\net-sdk.dll
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\RestSharp.dll
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\net-sdk.pdb
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\RestSharp.xml
+C:\Users\Mario\Desktop\Facultad\AppMoviles\LavaWeb\bin\net-sdk.pdb
+C:\Users\Mario\Desktop\Facultad\AppMoviles\LavaWeb\bin\RestSharp.xml

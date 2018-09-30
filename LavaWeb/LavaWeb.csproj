@@ -215,6 +215,7 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\miestilo.css" />
     <Content Include="css\responsive.css" />
     <Content Include="css\style.css" />
     <Content Include="css\_banner.css" />
@@ -549,6 +550,20 @@
     <Content Include="vendors\themify-icon\fonts\themify.eot" />
     <Content Include="vendors\themify-icon\fonts\themify.ttf" />
     <Content Include="vendors\themify-icon\fonts\themify.woff" />
+    <Content Include="scss\.DS_Store" />
+    <Content Include="scss\style.scss" />
+    <Content Include="scss\_banner.scss" />
+    <Content Include="scss\_blog.scss" />
+    <Content Include="scss\_button.scss" />
+    <Content Include="scss\_clients.scss" />
+    <Content Include="scss\_contact.scss" />
+    <Content Include="scss\_footer.scss" />
+    <Content Include="scss\_header.scss" />
+    <Content Include="scss\_predefin.scss" />
+    <Content Include="scss\_price.scss" />
+    <Content Include="scss\_service.scss" />
+    <Content Include="scss\_slider.scss" />
+    <Content Include="scss\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
