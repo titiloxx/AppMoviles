@@ -30,6 +30,8 @@
     <!-- Mi estilo -->
     <link href="css/miestilo.css" rel="stylesheet">
 
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -63,16 +65,16 @@
                         <li><a href="Home/Index#price">Contacto</a></li>
                         <li><a href="">Ingresar</a></li>
                         <!--<li class="dropdown submenu">
-        <a href="#blog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
-        <i class="fa fa-chevron-down click_btn" aria-hidden="true"></i>
-        <ul class="dropdown-menu">
-            <li><a href="blog-list.html">Blog List</a></li>
-            <li><a href="blog-list-2.html">Blog List Two</a></li>
-            <li><a href="blog-details.html">Blog Details</a></li>
-            <li><a href="blog-details-2.html">Blog Details Two</a></li>
-        </ul>
-    </li>
-    <li><a href="#contact">Contact</a></li>-->
+                            <a href="#blog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+                            <i class="fa fa-chevron-down click_btn" aria-hidden="true"></i>
+                            <ul class="dropdown-menu">
+                                <li><a href="blog-list.html">Blog List</a></li>
+                                <li><a href="blog-list-2.html">Blog List Two</a></li>
+                                <li><a href="blog-details.html">Blog Details</a></li>
+                                <li><a href="blog-details-2.html">Blog Details Two</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#contact">Contact</a></li>-->
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -164,7 +166,8 @@
                          data-splitout="none"
                          data-responsive_offset="on">
                         <div class="slider_man_shap">
-                            <img src="/img/header-slider/slider-man-shap.png" alt="">
+                            <img id="1" src="/img/header-slider/slider-man-shap.png" alt="">
+                            <img id="2" src="/img/header-slider/miriam.png" alt="">
                         </div>
                     </div>
                 </li>
@@ -268,8 +271,8 @@
         </div><!-- END REVOLUTION SLIDER -->
     </section>
     <!--================End Slider Area =================-->
-        @RenderBody()
-        <hr />
+    @RenderBody()
+    <hr />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/js/jquery-2.1.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -301,5 +304,8 @@
 
     <script src="/js/video_player.js"></script>
     <script src="/js/theme.js"></script>
+    <!-- Mi script-->
+    <script src="js/miScript.js"></script>
+
 </body>
 </html>
