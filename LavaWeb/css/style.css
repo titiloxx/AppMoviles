@@ -627,19 +627,6 @@ body, p, h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-.slider_shap .slider_moblie {
-  position: absolute;
-  top: 49.8%;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  bottom: 0px;
-  left: 49.84%;
-  width: 267px;
-  height: 476px;
-  overflow: hidden;
-}
-
 .slider_shap .slider_moblie .item img {
   width: 267px !important;
   height: 476px !important;

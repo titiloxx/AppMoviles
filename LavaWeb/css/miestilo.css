@@ -1,9 +1,29 @@
 
 /* Price area css
 ============================================================================================ */
+.screenshot_area{
+	background:#222222;
+}
+
+.main_title h2 {
+    color: #ff0030;
+}
+
+
+.works_area {
+background-color: rgba(51, 51, 51, 1.00);
+}
+
+.content_title h2 {
+	color: #ff0030;
+}
+
+.works_area .works_right_content p{
+	color: #aeaeae;
+}
 
 .ocur_service_area {
-    background-color: #222222;
+    background-color: #322222;
 }
 .precios_area {
     background: url(../img/price-bg.jpg) no-repeat scroll center center;
