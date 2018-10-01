@@ -38,3 +38,5 @@ LavaWeb/obj/Debug/LavaWeb.pdb
 *.pdb
 *.dll
 *.pdb
+*.cache
+*.cache
