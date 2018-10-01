@@ -3,8 +3,11 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+<link href="~/css/estiloAppMoviles.css" rel="stylesheet" />
 <div class="form-horizontal">
+    <div class="main_title our_service_area">
+        <h2 style="color: #0084b4;">Contacto</h2>
+    </div>
     <h4>Persona</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -67,6 +70,9 @@
     </div>
 </div>
 }
+<div id="mapa">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.3471839540016!2d-57.958444184697164!3d-34.922828780378055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e62dd769b9d7%3A0x8e5a62b28764b5ef!2sCatedral+de+La+Plata!5e0!3m2!1ses-419!2sar!4v1538355709786" width="600" height="450" frameborder="0" style="margin: auto; display: block; margin-left: auto; margin-right: auto;" allowfullscreen></iframe>
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
