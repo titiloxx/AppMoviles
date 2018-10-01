@@ -1,4 +1,5 @@
-﻿using MercadoLibre.SDK;
+﻿using LavaWeb.Models;
+using MercadoLibre.SDK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,13 +23,10 @@ namespace LavaWeb.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contacto()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
-
         [HttpGet]
         public ActionResult Buscar(string names, int? dias, int? max, int? min)
         {
