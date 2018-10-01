@@ -25,6 +25,73 @@ background-color: rgba(51, 51, 51, 1.00);
 .ocur_service_area {
     background-color: #322222;
 }
+
+img { /*enfoque*/
+	transition: 0.25s -webkit-filter linear;
+	filter: blur(0px);
+}
+
+img:hover { /*desenfoque*/
+	transition: 0.5s -webkit-filter linear;
+	filter: blur(4px);
+}
+
+
+.tp-bgimg.defaultimg{ /*enfoque*/
+	transition: 0.5s -webkit-filter linear;
+	filter: blur(0px);
+}
+
+.tp-bgimg.defaultimg:hover{ /*deenfoque*/
+	transition: 0.5s -webkit-filter linear;
+	filter: blur(3px);
+}
+
+.pricing_item{
+	transition: 0.5s;
+	overflow:hidden;
+}
+
+.pricing_item:hover{
+transition: 0.5s;
+border-radius: 25px 25px 25px 25px;
+-moz-border-radius: 25px 25px 25px 25px;
+-webkit-border-radius: 25px 25px 25px 25px;
+border: 0px solid #000000;
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+border-style: solid;
+-webkit-transform:scale(1.3);
+transform:scale(1.3);
+}
+
+.read_more.register_angkar_btn{
+	transition: 0.5s;
+	overflow:hidden;
+}
+
+.read_more.register_angkar_btn:hover{
+transition: 0.5s;
+border-radius: 25px 25px 25px 25px;
+-moz-border-radius: 25px 25px 25px 25px;
+-webkit-border-radius: 25px 25px 25px 25px;
+border: 0px solid #000000;
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+border-style: solid;
+-webkit-transform:scale(1.3);
+transform:scale(1.3);
+}
+
+
+
+
+
+
+
+
 .precios_area {
     background: url(../img/price-bg.jpg) no-repeat scroll center center;
     background-size: cover;
