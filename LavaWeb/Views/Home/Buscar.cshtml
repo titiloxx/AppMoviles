@@ -23,16 +23,21 @@
         </div>
         <div class="col-md-6 field col-xs-12 padding-md">
 
-            <input type="number" id="min" name="min" class="myFilter min form-control input input-group" aria-controls="tabla" style="width:80px;display:inline-block;margin-top: 0px;" placeholder="Min">
-            <input style="width:80px;display:inline-block;" type="number" name="max" id="max" class="myFilter max form-control input input-group" aria-controls="tabla" placeholder="Max">
+            <input onkeypress="return buscar(event)" type="number" id="min"  value="@ViewBag.min" name="min" class="myFilter min form-control input input-group" aria-controls="tabla" style="width:96px;display:inline-block;margin-top: 0px;" placeholder="Min">
+            <input onkeypress="return buscar(event)" style="width:96px;display:inline-block;" value="@ViewBag.max"  type="number" name="max" id="max" class="myFilter max form-control input input-group" aria-controls="tabla" placeholder="Max">
         </div>
     </div>
     <div class="col-md-4 padding-md">
         <div class="col-md-6 col-xs-12">
-            <h4 id="h4" style="display:inline-block;">Dias publicado &lt;</h4> <input style="width:70px;" type="number" name="dias" id="dias" class="myFilter dias form-control input input-group" aria-controls="tabla" value="999">
+            <h4 id="h4" style="display:inline-block;">Dias publicado &lt;</h4> <input onkeypress="return buscar(event)" value="@ViewBag.dias"  style="width:70px;" type="number" name="dias" id="dias" class="myFilter dias form-control input input-group" aria-controls="tabla" value="999">
         </div>
-        <div class="col-md-5 col-xs-12 padding-md">
-            <h4>Cantidad Total: @ViewBag.cantidadTotal</h4>
+        <div class="col-md-6 col-xs-12 padding-md">
+            <div class="row">
+                <h4>Cantidad Total: @ViewBag.cantidadTotal</h4>
+            </div>
+            <div class="row" style="margin-top:5px">
+                <h4>Pagina: @ViewBag.pagina</h4>
+            </div>
         </div>
     </div>
 </form>
@@ -55,12 +60,20 @@
 
 
 <div class="col-md-4 derecha">
-    <button type="button" class="btn btn-success derecha"><div class="glyphicon glyphicon-chevron-right"></div></button>
-    <button type="button" class="btn btn-success derecha"><div class="glyphicon glyphicon-chevron-left"></div></button>
+    <button type="button" onclick="siguiente()" class="btn btn-success derecha" @ViewBag.siguiente><div class="glyphicon glyphicon-chevron-right" ></div></button>
+    <button type="button" onclick="atras()" class="btn btn-success derecha" @ViewBag.atras><div class="glyphicon glyphicon-chevron-left" ></div></button>
 </div>
 
 <script>
-
+    urlParam = function (name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results == null) {
+            return null;
+        }
+        else {
+            return decodeURI(results[1]) || 0;
+        }
+    };
     function csgox() {
         if ($("#csgo").hasClass("btn-success")) {
             $("#csgo").removeClass("btn-success").addClass("btn-danger");
@@ -71,7 +84,7 @@
         var max = $("#max").val();
         var min = $("#min").val();
         var dias = $("#dias").val();
-        redirect(max,min,dias);
+        redirect(max,min,dias,0);
     }
     function fortnitex() {
         if ($("#fortnite").hasClass("btn-success")) {
@@ -83,7 +96,7 @@
         var max = $("#max").val();
         var min = $("#min").val();
         var dias = $("#dias").val();
-        redirect(max, min, dias);
+        redirect(max, min, dias,0);
     }
     function gtax() {
         if ($("#gta").hasClass("btn-success")) {
@@ -95,9 +108,9 @@
         var max = $("#max").val();
         var min = $("#min").val();
         var dias = $("#dias").val();
-        redirect(max, min, dias);
+        redirect(max, min, dias,0);
     }
-    function redirect(max,min, dias) {
+    function redirect(max,min, dias,page) {
         var csgo = $("#csgo").hasClass("btn-success");
         var fortnite = $("#fortnite").hasClass("btn-success");
         var gta = $("#gta").hasClass("btn-success");
@@ -114,10 +127,32 @@
         if (!gta && !fortnite&&!csgo) {
             names = "none";
         }
-        window.location.replace("/Home/Buscar?names=" + names + "&max=" + max + "&min=" + min+"&dias="+dias+"&page="+0);
+        window.location.replace("/Home/Buscar?names=" + names + "&max=" + max + "&min=" + min + "&dias=" + dias + "&page=" + page);
     }
     function enviar(id) {
         window.location.replace("/Home/Contacto?id="+id);
     }
-
+    function siguiente() {
+        var page = urlParam('page');
+        page++;
+        var max = $("#max").val();
+        var min = $("#min").val();
+        var dias = $("#dias").val();
+        redirect(max, min, dias, page);
+    }
+    function atras() {
+        var page = urlParam('page') - 1;
+        var max = $("#max").val();
+        var min = $("#min").val();
+        var dias = $("#dias").val();
+        redirect(max, min, dias, page);
+    }
+    function buscar(e) {
+        if (e.keyCode == 13) {
+            var max = $("#max").val();
+            var min = $("#min").val();
+            var dias = $("#dias").val();
+            redirect(max, min, dias, 0);
+        }
+    }
 </script>

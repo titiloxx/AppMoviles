@@ -163,11 +163,9 @@ namespace WebApplication6.Models
                 lista.AddRange(pedazoListaML((i * 50), estado, buscar,dias,max,min));
                 if (lista.Count>13)
                 {
-                    lista.RemoveRange(13, lista.Count - 14);
                     return lista ;
                 }
             }
-            lista.RemoveRange(13, lista.Count - 14);
             return lista;
         }
         public List<Record> pedazoListaML(int offset, string estado,string buscar,int dias, int max, int min)

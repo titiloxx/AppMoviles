@@ -46,13 +46,17 @@ namespace LavaWeb.Controllers
             List<Record> lista10 = new List<Record>();
             ViewBag.dias = (dias == null) ? 999 : dias.Value;
             ViewBag.min = (min == null) ? 0 : min.Value;
-            ViewBag.max = (min == null) ? 99999 : max.Value;
-
+            ViewBag.max = (max == null) ? 99999 : max.Value;
+            page = (page == null) ? 0 : page;
+            dias = (dias == null) ? 999 : dias;
+            max = (max == null) ? 99999 : max;
+            min = (min == null) ? 0 : min;
             ViewBag.csgo = "btn-success";
             ViewBag.fortnite = "btn-success";
             ViewBag.gta = "btn-success";
 
-            names=(names == null)?"csgo fortnite gta":names;
+   
+            names =(names == null)?"csgo fortnite gta":names;
             var diasAux = (dias == null) ? 999 : dias.Value;
             var minAux = (min == null) ? 0 : min.Value;
             var maxAux = (min == null) ? 99999 : max.Value;
@@ -63,9 +67,9 @@ namespace LavaWeb.Controllers
             bool csgo = names.ToLower().Contains("csgo");
             bool fortnite = names.ToLower().Contains("fortnite");
             bool gta = names.ToLower().Contains("gta");
-            if (page==null||page==0)
+            if (page==0)
             {
-                page = 0;
+                ViewBag.atras = "disabled";
                 var ta = Task.Factory.StartNew(() => {
                     lista10.AddRange(cord1.buscarListaML("", "cheat csgo", diasAux, maxAux, minAux));
                 });
@@ -88,6 +92,7 @@ namespace LavaWeb.Controllers
            
             var listaFiltrada = lista10.Where(x => (x.nombre.ToLower().Contains("cheat") || x.nombre.ToLower().Contains("hack"))&&
             (x.nombre.ToLower().Contains("fortnite")|| x.nombre.ToLower().Contains("csgo")|| x.nombre.ToLower().Contains("gta"))).ToList();
+            listaFiltrada = listaFiltrada.Where(x => x.precio < max.Value && x.precio > min.Value && x.diasC < dias.Value).ToList();
             if (!gta)
             {
                 listaFiltrada=listaFiltrada.Where(x=>!x.nombre.ToLower().Contains("gta")).ToList();
@@ -104,6 +109,7 @@ namespace LavaWeb.Controllers
                 ViewBag.fortnite = "btn-danger";
             }
             ViewBag.cantidadTotal = listaFiltrada.Count();
+            ViewBag.pagina = page+1;
             Session["lista"] = listaFiltrada;
             int contador = 1;
             List<Record> listAux = new List<Record>();
@@ -127,7 +133,28 @@ namespace LavaWeb.Controllers
             {
                 listaTotal.Add(listAux);
             }
-            return View(listaTotal[page.Value]);
+            if (listaFiltrada != null && listaFiltrada.Count > 0)
+            {
+                int cont = (listaFiltrada.Count / 10);
+                if (listaFiltrada.Count % 10==0)
+                {
+                    cont--;
+                }
+                if (page.Value == cont)
+                {
+                    ViewBag.siguiente = "disabled";
+                }
+            }
+            try
+            {
+                return View(listaTotal[page.Value]);
+            }
+            catch 
+            {
+                return View(new List<Record>());
+
+            }
+        
         }
     }
 }
