@@ -9,11 +9,13 @@ namespace LavaWeb.Models
 {
     public class Persona
     {
+        [Display(Name = "Email del emisor")]
+        [DataType(DataType.EmailAddress)]
         [Required]
-        [Display(Name = "Email Origen")]
         public string EmailOrigen{ get; set; }
 
         [Required]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Destino")]
         public string EmailDestino { get; set; }
 

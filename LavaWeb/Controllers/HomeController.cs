@@ -24,6 +24,7 @@ namespace LavaWeb.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Contacto(string id)
         {
             var m = Session["lista"] as List<Record>;
@@ -35,10 +36,32 @@ namespace LavaWeb.Controllers
             {
 
                 return View();
-            
             }
             
         }
+
+
+        [HttpPost]
+        public ActionResult Contacto(Persona p)
+        {
+            if (!ModelState.IsValid)
+            { 
+                return Contacto("");
+            }
+            MailManager m = new MailManager();
+            var nombre = ((p.Nombre == "") ? "" : p.Nombre + " ");
+            var apellido = ((p.Apellido == "") ? "" : p.Apellido + " ");
+            m.MandarEmail(p.EmailDestino, "Tu amigo "+ nombre + "Te ha invitado a ver un producto", "Mira este increible producto que te mandó tu amigo " + nombre+" "+apellido
+                 + Environment.NewLine + "Producto: " + p.Producto.nombre
+                 + Environment.NewLine + "Precio: " + p.Producto.precio
+                 + Environment.NewLine + "Dias desde su creacion: " +p.Producto.diasC
+                 + Environment.NewLine + "Respondele a su email: " + p.EmailOrigen
+                 + Environment.NewLine + Environment.NewLine 
+                 + Environment.NewLine + "Saludos, Lavacheats!");
+            return View();
+        }
+
+
         [HttpGet]
         public ActionResult Buscar(string names, int? dias, int? max, int? min, int? page)
         {
@@ -156,5 +179,6 @@ namespace LavaWeb.Controllers
             }
         
         }
+
     }
 }
