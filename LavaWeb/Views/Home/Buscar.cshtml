@@ -16,9 +16,9 @@
         <div class="col-md-6 field col-xs-12">
             <h4 id="h4" style="display:inline-block;">Filtrar: </h4>
             <div style="display: inline-block;">
-                <input style="margin-left:15px;" class="btn btn-warning" type="submit" value="CSGO">
-                <input style="margin-left:15px;" class="btn btn-warning" type="submit" value="PUBG">
-                <input style="margin-left:15px;" class="btn btn-warning" type="submit" value="Fortnite">
+                <input id="csgo" style="margin-left:15px;" class="btn btn-warning" type="submit" value="CSGO" @ViewBag.csgo>
+                <input id="gta" style="margin-left:15px;" class="btn btn-warning" type="submit" value="GTA" @ViewBag.gta>
+                <input id="fortnite" style="margin-left:15px;" class="btn btn-warning" type="submit" value="Fortnite" @ViewBag.fortnite>
             </div>
         </div>
         <div class="col-md-6 field col-xs-12 padding-md">
@@ -32,7 +32,7 @@
             <h4 id="h4" style="display:inline-block;">Dias publicado &lt;</h4> <input style="width:70px;" type="number" name="dias" id="dias" class="myFilter dias form-control input input-group" aria-controls="tabla" value="999">
         </div>
         <div class="col-md-5 col-xs-12 padding-md">
-            <h4>Cantidad Total:</h4>
+            <h4>Cantidad Total: @Model.Count()</h4>
         </div>
     </div>
 </form>

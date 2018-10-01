@@ -3,6 +3,7 @@ using MercadoLibre.SDK;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication6.Models;
@@ -44,7 +45,7 @@ namespace LavaWeb.Controllers
             ViewBag.dias = (dias == null) ? 999 : dias.Value;
             ViewBag.min = (min == null) ? 0 : min.Value;
             ViewBag.max = (min == null) ? 99999 : max.Value;
-            names = !(names==null) ? "" : "csgo fortnite pubg";
+            names = !(names==null) ? "" : "csgo fortnite gta";
             if (dias == null&&names.Contains("none"))
             {
                 return View();
@@ -59,18 +60,40 @@ namespace LavaWeb.Controllers
             List<Record> lista1 = new List<Record>();
             if (names.ToLower().Contains("csgo"))
             {
-                lista1.AddRange(cord1.buscarListaML("", "cheat csgo", diasAux, maxAux, minAux));
+                var t=Task.Factory.StartNew(() => {
+                    lista1.AddRange(cord1.buscarListaML("", "cheat csgo", diasAux, maxAux, minAux));
+                });
+                t.Wait();
+            }
+            else
+            {
+                ViewBag.csgo = "disabled";
             }
             if (names.ToLower().Contains("fortnite"))
             {
-                lista1.AddRange(cord1.buscarListaML("", "cheat fortnite", diasAux, maxAux, minAux));
+
+                var t = Task.Factory.StartNew(() => {
+                    lista1.AddRange(cord1.buscarListaML("", "cheat fortnite", diasAux, maxAux, minAux));
+                });
+                t.Wait();
             }
-            if (names.ToLower().Contains("pubg"))
+            else
             {
-                lista1.AddRange(cord1.buscarListaML("cheat pubg", names, diasAux, maxAux, minAux));
+                ViewBag.fortnite = "disabled";
+            }
+            if (names.ToLower().Contains("gta"))
+            {
+                var t = Task.Factory.StartNew(() => {
+                    lista1.AddRange(cord1.buscarListaML("cheat gta", names, diasAux, maxAux, minAux));
+                });
+                t.Wait();
+            }
+            else
+            {
+                ViewBag.gta = "disabled";
             }
             var listaFiltrada = lista1.Where(x => (x.nombre.ToLower().Contains("cheat") || x.nombre.ToLower().Contains("hack"))&&
-            (x.nombre.ToLower().Contains("fortnite")|| x.nombre.ToLower().Contains("csgo")|| x.nombre.ToLower().Contains("pubg"))).ToList();
+            (x.nombre.ToLower().Contains("fortnite")|| x.nombre.ToLower().Contains("csgo")|| x.nombre.ToLower().Contains("gta"))).ToList();
             Session["lista"] = listaFiltrada;
             return View(listaFiltrada);
         }
