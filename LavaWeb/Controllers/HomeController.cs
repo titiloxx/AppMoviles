@@ -23,12 +23,23 @@ namespace LavaWeb.Controllers
             return View();
         }
 
-        public ActionResult Contacto()
+        public ActionResult Contacto(string id)
         {
-            return View();
+            var m = Session["lista"] as List<Record>;
+            try
+            {
+                return View(new Persona {Producto= m.First(x => x.id == id) });
+            }
+            catch 
+            {
+
+                return View();
+            
+            }
+            
         }
         [HttpGet]
-        public ActionResult Buscar(string names, int? dias, int? max, int? min)
+        public ActionResult Buscar(string names, int? dias, int? max, int? min, int? page)
         {
             ViewBag.dias = (dias == null) ? 999 : dias.Value;
             ViewBag.min = (min == null) ? 0 : min.Value;
@@ -60,6 +71,7 @@ namespace LavaWeb.Controllers
             }
             var listaFiltrada = lista1.Where(x => (x.nombre.ToLower().Contains("cheat") || x.nombre.ToLower().Contains("hack"))&&
             (x.nombre.ToLower().Contains("fortnite")|| x.nombre.ToLower().Contains("csgo")|| x.nombre.ToLower().Contains("pubg"))).ToList();
+            Session["lista"] = listaFiltrada;
             return View(listaFiltrada);
         }
     }
