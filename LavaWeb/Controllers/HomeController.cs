@@ -42,60 +42,119 @@ namespace LavaWeb.Controllers
         [HttpGet]
         public ActionResult Buscar(string names, int? dias, int? max, int? min, int? page)
         {
+            List<List<Record>> listaTotal = new List<List<Record>>();
+            List<Record> lista10 = new List<Record>();
             ViewBag.dias = (dias == null) ? 999 : dias.Value;
             ViewBag.min = (min == null) ? 0 : min.Value;
-            ViewBag.max = (min == null) ? 99999 : max.Value;
-            names = !(names==null) ? "" : "csgo fortnite gta";
-            if (dias == null&&names.Contains("none"))
-            {
-                return View();
-            }
+            ViewBag.max = (max == null) ? 99999 : max.Value;
+            page = (page == null) ? 0 : page;
+            dias = (dias == null) ? 999 : dias;
+            max = (max == null) ? 99999 : max;
+            min = (min == null) ? 0 : min;
+            ViewBag.csgo = "btn-success";
+            ViewBag.fortnite = "btn-success";
+            ViewBag.gta = "btn-success";
 
+   
+            names =(names == null)?"csgo fortnite gta":names;
             var diasAux = (dias == null) ? 999 : dias.Value;
             var minAux = (min == null) ? 0 : min.Value;
             var maxAux = (min == null) ? 99999 : max.Value;
             Meli m = new Meli(754014355650430, "jR9v7lRr06CfzhSOdppHyrNSMhxYKCKb");
             m.Authorize(CoordinadorMl.cambiarVida(), "https://twitter.com");
             CoordinadorMl cord1 = new CoordinadorMl(m);
-            List<Record> lista1 = new List<Record>();
-            if (names.ToLower().Contains("csgo"))
-            {
-                var t=Task.Factory.StartNew(() => {
-                    lista1.AddRange(cord1.buscarListaML("", "cheat csgo", diasAux, maxAux, minAux));
-                });
-                t.Wait();
-            }
-            else
-            {
-                ViewBag.csgo = "disabled";
-            }
-            if (names.ToLower().Contains("fortnite"))
-            {
 
-                var t = Task.Factory.StartNew(() => {
-                    lista1.AddRange(cord1.buscarListaML("", "cheat fortnite", diasAux, maxAux, minAux));
+            bool csgo = names.ToLower().Contains("csgo");
+            bool fortnite = names.ToLower().Contains("fortnite");
+            bool gta = names.ToLower().Contains("gta");
+            if (page==0)
+            {
+                ViewBag.atras = "disabled";
+                var ta = Task.Factory.StartNew(() => {
+                    lista10.AddRange(cord1.buscarListaML("", "cheat csgo", diasAux, maxAux, minAux));
                 });
-                t.Wait();
+
+                var te = Task.Factory.StartNew(() => {
+                    lista10.AddRange(cord1.buscarListaML("", "cheat fortnite", diasAux, maxAux, minAux));
+                });
+
+                var ti = Task.Factory.StartNew(() => {
+                    lista10.AddRange(cord1.buscarListaML("cheat gta", names, diasAux, maxAux, minAux));
+                });
+                ta.Wait();
+                te.Wait();
+                ti.Wait();
             }
             else
             {
-                ViewBag.fortnite = "disabled";
+                lista10= Session["lista"] as List<Record>;
             }
-            if (names.ToLower().Contains("gta"))
-            {
-                var t = Task.Factory.StartNew(() => {
-                    lista1.AddRange(cord1.buscarListaML("cheat gta", names, diasAux, maxAux, minAux));
-                });
-                t.Wait();
-            }
-            else
-            {
-                ViewBag.gta = "disabled";
-            }
-            var listaFiltrada = lista1.Where(x => (x.nombre.ToLower().Contains("cheat") || x.nombre.ToLower().Contains("hack"))&&
+           
+            var listaFiltrada = lista10.Where(x => (x.nombre.ToLower().Contains("cheat") || x.nombre.ToLower().Contains("hack"))&&
             (x.nombre.ToLower().Contains("fortnite")|| x.nombre.ToLower().Contains("csgo")|| x.nombre.ToLower().Contains("gta"))).ToList();
+            listaFiltrada = listaFiltrada.Where(x => x.precio < max.Value && x.precio > min.Value && x.diasC < dias.Value).ToList();
+            if (!gta)
+            {
+                listaFiltrada=listaFiltrada.Where(x=>!x.nombre.ToLower().Contains("gta")).ToList();
+                ViewBag.gta = "btn-danger";
+            }
+            if (!csgo)
+            {
+                listaFiltrada=listaFiltrada.Where(x => !x.nombre.ToLower().Contains("csgo")).ToList();
+                ViewBag.csgo = "btn-danger";
+            }
+            if (!fortnite)
+            {
+                listaFiltrada=listaFiltrada.Where(x => !x.nombre.ToLower().Contains("fortnite")).ToList();
+                ViewBag.fortnite = "btn-danger";
+            }
+            ViewBag.cantidadTotal = listaFiltrada.Count();
+            ViewBag.pagina = page+1;
             Session["lista"] = listaFiltrada;
-            return View(listaFiltrada);
+            int contador = 1;
+            List<Record> listAux = new List<Record>();
+            foreach (var item in listaFiltrada)
+            {
+                if (contador<10)
+                {
+                    listAux.Add(item);
+                   
+                }
+                else
+                {
+                    listAux.Add(item);
+                    listaTotal.Add(listAux);
+                    listAux = new List<Record>();
+                    contador = -1;
+                }
+                contador++;
+            }
+            if (listAux.Count>0)
+            {
+                listaTotal.Add(listAux);
+            }
+            if (listaFiltrada != null && listaFiltrada.Count > 0)
+            {
+                int cont = (listaFiltrada.Count / 10);
+                if (listaFiltrada.Count % 10==0)
+                {
+                    cont--;
+                }
+                if (page.Value == cont)
+                {
+                    ViewBag.siguiente = "disabled";
+                }
+            }
+            try
+            {
+                return View(listaTotal[page.Value]);
+            }
+            catch 
+            {
+                return View(new List<Record>());
+
+            }
+        
         }
     }
 }

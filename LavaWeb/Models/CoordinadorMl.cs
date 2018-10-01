@@ -131,21 +131,21 @@ namespace WebApplication6.Models
         {
             try
             {
-               
+                /*
                  DateTime fechaantes = DateTime.Parse(fechaML);
                  DateTime fechaahora = DateTime.Today.Date;
                  int dias = fechaahora.Subtract(fechaantes).Days;
                  return dias;
-
+                     */
                 // Descomentar esto para sacarlo del servidor, y comentar lo de arriba
-                /*
-               string[] words = fechaML.Split('/');
+
+                string[] words = fechaML.Split('/');
                string inversion = words[1] + "/" + words[0] + "/" + words[2];
                DateTime fechaantes = DateTime.Parse(inversion);
                DateTime fechaahora = DateTime.Today.Date;
                int dias = fechaahora.Subtract(fechaantes).Days;
                return dias;
-                */
+            
             }
             catch
             {
@@ -163,11 +163,9 @@ namespace WebApplication6.Models
                 lista.AddRange(pedazoListaML((i * 50), estado, buscar,dias,max,min));
                 if (lista.Count>13)
                 {
-                    lista.RemoveRange(13, lista.Count - 14);
                     return lista ;
                 }
             }
-            lista.RemoveRange(13, lista.Count - 14);
             return lista;
         }
         public List<Record> pedazoListaML(int offset, string estado,string buscar,int dias, int max, int min)
