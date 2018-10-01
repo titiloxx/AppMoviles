@@ -16,9 +16,9 @@
         <div class="col-md-6 field col-xs-12">
             <h4 id="h4" style="display:inline-block;">Filtrar: </h4>
             <div style="display: inline-block;">
-                <input id="csgo" style="margin-left:15px;" class="btn btn-warning" type="submit" value="CSGO" @ViewBag.csgo>
-                <input id="gta" style="margin-left:15px;" class="btn btn-warning" type="submit" value="GTA" @ViewBag.gta>
-                <input id="fortnite" style="margin-left:15px;" class="btn btn-warning" type="submit" value="Fortnite" @ViewBag.fortnite>
+                <input id="csgo" style="margin-left:15px;width: 76px;" class="btn @ViewBag.csgo"  onclick="csgox()" value="CSGO" >
+                <input id="gta" style="margin-left:15px;width: 76px;" class="btn @ViewBag.gta"  onclick="gtax()" value="GTA" >
+                <input id="fortnite" style="margin-left:15px;width: 76px;" class="btn @ViewBag.fortnite" onclick="fortnitex()" value="Fortnite">
             </div>
         </div>
         <div class="col-md-6 field col-xs-12 padding-md">
@@ -32,7 +32,7 @@
             <h4 id="h4" style="display:inline-block;">Dias publicado &lt;</h4> <input style="width:70px;" type="number" name="dias" id="dias" class="myFilter dias form-control input input-group" aria-controls="tabla" value="999">
         </div>
         <div class="col-md-5 col-xs-12 padding-md">
-            <h4>Cantidad Total: @Model.Count()</h4>
+            <h4>Cantidad Total: @ViewBag.cantidadTotal</h4>
         </div>
     </div>
 </form>
@@ -61,10 +61,61 @@
 
 <script>
 
-    function redirect(nombres,precio,dias) {
-        window.location.replace("/Home/Buscar?names=csgo&precio=");
+    function csgox() {
+        if ($("#csgo").hasClass("btn-success")) {
+            $("#csgo").removeClass("btn-success").addClass("btn-danger");
+        }
+        else {
+            $("#csgo").removeClass("danger").addClass("btn-success");
+        }
+        var max = $("#max").val();
+        var min = $("#min").val();
+        var dias = $("#dias").val();
+        redirect(max,min,dias);
     }
-
+    function fortnitex() {
+        if ($("#fortnite").hasClass("btn-success")) {
+            $("#fortnite").removeClass("btn-success").addClass("btn-danger");
+        }
+        else {
+            $("#fortnite").removeClass("danger").addClass("btn-success");
+        }
+        var max = $("#max").val();
+        var min = $("#min").val();
+        var dias = $("#dias").val();
+        redirect(max, min, dias);
+    }
+    function gtax() {
+        if ($("#gta").hasClass("btn-success")) {
+            $("#gta").removeClass("btn-success").addClass("btn-danger");
+        }
+        else {
+            $("#gta").removeClass("danger").addClass("btn-success");
+        }
+        var max = $("#max").val();
+        var min = $("#min").val();
+        var dias = $("#dias").val();
+        redirect(max, min, dias);
+    }
+    function redirect(max,min, dias) {
+        var csgo = $("#csgo").hasClass("btn-success");
+        var fortnite = $("#fortnite").hasClass("btn-success");
+        var gta = $("#gta").hasClass("btn-success");
+        var names = "";
+        if (csgo) {
+            names = names + "csgo";
+        }
+        if (fortnite) {
+            names = names + " fortnite";
+        }
+        if (gta) {
+            names = names + " gta";
+        }
+        if (!gta && !fortnite&&!csgo) {
+            names = "none";
+        }
+        window.location.replace("/Home/Buscar?names=" + names + "&max=" + max + "&min=" + min+"&dias="+dias+"&page="+0);
+    }
     function enviar(id) {
         window.location.replace("/Home/Contacto?id="+id);
     }

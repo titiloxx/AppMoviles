@@ -131,21 +131,21 @@ namespace WebApplication6.Models
         {
             try
             {
-               
+                /*
                  DateTime fechaantes = DateTime.Parse(fechaML);
                  DateTime fechaahora = DateTime.Today.Date;
                  int dias = fechaahora.Subtract(fechaantes).Days;
                  return dias;
-
+                     */
                 // Descomentar esto para sacarlo del servidor, y comentar lo de arriba
-                /*
-               string[] words = fechaML.Split('/');
+
+                string[] words = fechaML.Split('/');
                string inversion = words[1] + "/" + words[0] + "/" + words[2];
                DateTime fechaantes = DateTime.Parse(inversion);
                DateTime fechaahora = DateTime.Today.Date;
                int dias = fechaahora.Subtract(fechaantes).Days;
                return dias;
-                */
+            
             }
             catch
             {
