@@ -49,7 +49,7 @@
     <div class="col-md-3 col-xs-3 tableCell">@item.nombre</div>
     <div class="col-md-3 col-xs-3 tableCell">$ @item.precio</div>
     <div class="col-md-3 col-xs-3 tableCell">@item.diasC dias</div>
-    <div class="col-md-3 col-xs-3 tableCell"><a class="pointer share" onclick="confirmar('Municipalidadad Vla',14360)"> <div class="glyphicon glyphicon-share"></div></a></div>
+    <div class="col-md-3 col-xs-3 tableCell"><a class="pointer share" onclick="enviar('@item.id')"> <div class="glyphicon glyphicon-share"></div></a></div>
 </div>
 }
 
@@ -58,3 +58,15 @@
     <button type="button" class="btn btn-success derecha"><div class="glyphicon glyphicon-chevron-right"></div></button>
     <button type="button" class="btn btn-success derecha"><div class="glyphicon glyphicon-chevron-left"></div></button>
 </div>
+
+<script>
+
+    function redirect(nombres,precio,dias) {
+        window.location.replace("/Home/Buscar?names=csgo&precio=");
+    }
+
+    function enviar(id) {
+        window.location.replace("/Home/Contacto?id="+id);
+    }
+
+</script>
