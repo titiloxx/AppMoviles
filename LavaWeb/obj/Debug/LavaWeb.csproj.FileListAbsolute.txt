@@ -401,7 +401,6 @@ C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\es\EntityFramework.SqlServer.resou
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\es\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\es\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.csprojAssemblyReference.cache
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.csproj.CoreCompileInputs.cache
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.csproj.CopyComplete
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.dll

@@ -1,0 +1,25 @@
+body{
+	background: #eee;
+}
+
+#bloquecontacto, #compartir{
+	margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+#compartir{
+	margin: auto;
+    width: 50%;
+    border: 2px solid black;
+    padding: 10px;
+ 	margin: auto; display: block; margin-left: auto; margin-right: auto;
+}
+
+.form-group{
+    font-size: 15px;
+    font-family: "Montserrat", sans-serif;
+    color: #0084b4;
+ }
+
+

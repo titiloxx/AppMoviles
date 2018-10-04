@@ -93,6 +93,7 @@ namespace LavaWeb.Controllers
             if (page==0)
             {
                 ViewBag.atras = "disabled";
+                
                 var ta = Task.Factory.StartNew(() => {
                     lista10.AddRange(cord1.buscarListaML("", "cheat csgo", diasAux, maxAux, minAux));
                 });
