@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MlcrewDBModelStoreContainer" CdmEntityContainer="MlcrewDBEntities">
+    <EntitySetMapping Name="Subscripcion">
+      <EntityTypeMapping TypeName="MlcrewDBModel.Subscripcion">
+        <MappingFragment StoreEntitySet="Subscripcion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="juego" ColumnName="juego" />
+          <ScalarProperty Name="expira" ColumnName="expira" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="MlcrewDBModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+          <ScalarProperty Name="subscripcion" ColumnName="subscripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

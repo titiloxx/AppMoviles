@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MlcrewDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Subscripcion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="juego" Type="Int32" />
+    <Property Name="expira" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Subscripcion" FromRole="Subscripcion" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="contraseña" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="subscripcion" Type="Int32" />
+    <NavigationProperty Name="Subscripcion1" Relationship="Self.FK_Usuarios_Subscripcion" FromRole="Usuarios" ToRole="Subscripcion" />
+  </EntityType>
+  <Association Name="FK_Usuarios_Subscripcion">
+    <End Role="Subscripcion" Type="Self.Subscripcion" Multiplicity="0..1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subscripcion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="subscripcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MlcrewDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Subscripcion" EntityType="Self.Subscripcion" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Usuarios_Subscripcion" Association="Self.FK_Usuarios_Subscripcion">
+      <End Role="Subscripcion" EntitySet="Subscripcion" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

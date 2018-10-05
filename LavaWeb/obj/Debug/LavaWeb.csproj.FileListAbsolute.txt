@@ -411,3 +411,4 @@ C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\net-sdk.pdb
 C:\Users\kevin\Desktop\AppMoviles\LavaWeb\bin\RestSharp.xml
 C:\Users\Mario\Desktop\Facultad\AppMoviles\LavaWeb\bin\net-sdk.pdb
 C:\Users\Mario\Desktop\Facultad\AppMoviles\LavaWeb\bin\RestSharp.xml
+C:\Users\kevin\Desktop\AppMoviles\LavaWeb\obj\Debug\LavaWeb.csprojAssemblyReference.cache
