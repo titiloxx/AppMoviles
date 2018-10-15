@@ -1,10 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MlcrewDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Seguridad">
+    <Key>
+      <PropertyRef Name="idSeguridad" />
+    </Key>
+    <Property Name="idSeguridad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ip" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
   <EntityType Name="Subscripcion">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="idSubscripcion" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idSubscripcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="juego" Type="int" />
     <Property Name="expira" Type="date" />
   </EntityType>
@@ -13,26 +37,44 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="usuario" Type="nchar" MaxLength="10" />
-    <Property Name="contraseña" Type="nchar" MaxLength="10" />
-    <Property Name="subscripcion" Type="int" />
+    <Property Name="idSubscripcion" Type="int" Nullable="false" />
+    <Property Name="idSeguridad" Type="int" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Usuarios_Subscripcion">
-    <End Role="Subscripcion" Type="Self.Subscripcion" Multiplicity="0..1" />
+  <Association Name="FK_Usuarios_Seguridad">
+    <End Role="Seguridad" Type="Self.Seguridad" Multiplicity="1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seguridad">
+        <PropertyRef Name="idSeguridad" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idSeguridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Subscripcion1">
+    <End Role="Subscripcion" Type="Self.Subscripcion" Multiplicity="1" />
     <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Subscripcion">
-        <PropertyRef Name="id" />
+        <PropertyRef Name="idSubscripcion" />
       </Principal>
       <Dependent Role="Usuarios">
-        <PropertyRef Name="subscripcion" />
+        <PropertyRef Name="idSubscripcion" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="MlcrewDBModelStoreContainer">
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seguridad" EntityType="Self.Seguridad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subscripcion" EntityType="Self.Subscripcion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Usuarios_Subscripcion" Association="Self.FK_Usuarios_Subscripcion">
+    <AssociationSet Name="FK_Usuarios_Seguridad" Association="Self.FK_Usuarios_Seguridad">
+      <End Role="Seguridad" EntitySet="Seguridad" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Subscripcion1" Association="Self.FK_Usuarios_Subscripcion1">
       <End Role="Subscripcion" EntitySet="Subscripcion" />
       <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>

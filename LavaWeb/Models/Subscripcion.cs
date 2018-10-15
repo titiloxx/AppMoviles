@@ -20,7 +20,7 @@ namespace LavaWeb.Models
             this.Usuarios = new HashSet<Usuarios>();
         }
     
-        public int id { get; set; }
+        public int idSubscripcion { get; set; }
         public Nullable<int> juego { get; set; }
         public Nullable<System.DateTime> expira { get; set; }
     

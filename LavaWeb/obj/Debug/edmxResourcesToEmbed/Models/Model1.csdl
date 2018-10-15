@@ -1,42 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MlcrewDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MlcrewDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="Seguridad" EntityType="MlcrewDBModel.Seguridad" />
+    <EntitySet Name="Subscripcion" EntityType="MlcrewDBModel.Subscripcion" />
+    <EntitySet Name="Usuarios" EntityType="MlcrewDBModel.Usuarios" />
+    <AssociationSet Name="FK_Usuarios_Seguridad" Association="MlcrewDBModel.FK_Usuarios_Seguridad">
+      <End Role="Seguridad" EntitySet="Seguridad" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Subscripcion1" Association="MlcrewDBModel.FK_Usuarios_Subscripcion1">
+      <End Role="Subscripcion" EntitySet="Subscripcion" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Seguridad">
+    <Key>
+      <PropertyRef Name="idSeguridad" />
+    </Key>
+    <Property Name="idSeguridad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ip" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuarios" Relationship="MlcrewDBModel.FK_Usuarios_Seguridad" FromRole="Seguridad" ToRole="Usuarios" />
+  </EntityType>
   <EntityType Name="Subscripcion">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="idSubscripcion" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSubscripcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="juego" Type="Int32" />
     <Property Name="expira" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Subscripcion" FromRole="Subscripcion" ToRole="Usuarios" />
+    <NavigationProperty Name="Usuarios" Relationship="MlcrewDBModel.FK_Usuarios_Subscripcion1" FromRole="Subscripcion" ToRole="Usuarios" />
   </EntityType>
   <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="contraseña" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="subscripcion" Type="Int32" />
-    <NavigationProperty Name="Subscripcion1" Relationship="Self.FK_Usuarios_Subscripcion" FromRole="Usuarios" ToRole="Subscripcion" />
+    <Property Name="idSubscripcion" Type="Int32" Nullable="false" />
+    <Property Name="idSeguridad" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Seguridad" Relationship="MlcrewDBModel.FK_Usuarios_Seguridad" FromRole="Usuarios" ToRole="Seguridad" />
+    <NavigationProperty Name="Subscripcion" Relationship="MlcrewDBModel.FK_Usuarios_Subscripcion1" FromRole="Usuarios" ToRole="Subscripcion" />
   </EntityType>
-  <Association Name="FK_Usuarios_Subscripcion">
-    <End Role="Subscripcion" Type="Self.Subscripcion" Multiplicity="0..1" />
-    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+  <Association Name="FK_Usuarios_Seguridad">
+    <End Type="MlcrewDBModel.Seguridad" Role="Seguridad" Multiplicity="1" />
+    <End Type="MlcrewDBModel.Usuarios" Role="Usuarios" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Subscripcion">
-        <PropertyRef Name="id" />
+      <Principal Role="Seguridad">
+        <PropertyRef Name="idSeguridad" />
       </Principal>
       <Dependent Role="Usuarios">
-        <PropertyRef Name="subscripcion" />
+        <PropertyRef Name="idSeguridad" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MlcrewDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Subscripcion" EntityType="Self.Subscripcion" />
-    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-    <AssociationSet Name="FK_Usuarios_Subscripcion" Association="Self.FK_Usuarios_Subscripcion">
-      <End Role="Subscripcion" EntitySet="Subscripcion" />
-      <End Role="Usuarios" EntitySet="Usuarios" />
-    </AssociationSet>
-  </EntityContainer>
+  <Association Name="FK_Usuarios_Subscripcion1">
+    <End Type="MlcrewDBModel.Subscripcion" Role="Subscripcion" Multiplicity="1" />
+    <End Type="MlcrewDBModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subscripcion">
+        <PropertyRef Name="idSubscripcion" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idSubscripcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
