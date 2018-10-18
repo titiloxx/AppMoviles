@@ -13,10 +13,10 @@ namespace LavaWeb.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MlcrewDBEntities : DbContext
+    public partial class MlcrewDBEntities1 : DbContext
     {
-        public MlcrewDBEntities()
-            : base("name=MlcrewDBEntities")
+        public MlcrewDBEntities1()
+            : base("name=MlcrewDBEntities1")
         {
         }
     
@@ -25,6 +25,8 @@ namespace LavaWeb.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
+        public virtual DbSet<Seguridad> Seguridad { get; set; }
         public virtual DbSet<Subscripcion> Subscripcion { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
     }

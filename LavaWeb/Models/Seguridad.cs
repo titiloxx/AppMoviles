@@ -12,14 +12,18 @@ namespace LavaWeb.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuarios
+    public partial class Seguridad
     {
-        public int id { get; set; }
-        public int idSubscripcion { get; set; }
-        public int idSeguridad { get; set; }
-        public string email { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Seguridad()
+        {
+            this.Usuarios = new HashSet<Usuarios>();
+        }
     
-        public virtual Seguridad Seguridad { get; set; }
-        public virtual Subscripcion Subscripcion { get; set; }
+        public int idSeguridad { get; set; }
+        public string ip { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

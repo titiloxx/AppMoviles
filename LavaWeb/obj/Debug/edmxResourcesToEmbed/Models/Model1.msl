@@ -1,22 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MlcrewDBModelStoreContainer" CdmEntityContainer="MlcrewDBEntities">
+  <EntityContainerMapping StorageEntityContainer="MlcrewDBModelStoreContainer" CdmEntityContainer="MlcrewDBEntities1">
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="MlcrewDBModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seguridad">
+      <EntityTypeMapping TypeName="MlcrewDBModel.Seguridad">
+        <MappingFragment StoreEntitySet="Seguridad">
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="idSeguridad" ColumnName="idSeguridad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Subscripcion">
       <EntityTypeMapping TypeName="MlcrewDBModel.Subscripcion">
         <MappingFragment StoreEntitySet="Subscripcion">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="juego" ColumnName="juego" />
           <ScalarProperty Name="expira" ColumnName="expira" />
+          <ScalarProperty Name="juego" ColumnName="juego" />
+          <ScalarProperty Name="idSubscripcion" ColumnName="idSubscripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="MlcrewDBModel.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="idSeguridad" ColumnName="idSeguridad" />
+          <ScalarProperty Name="idSubscripcion" ColumnName="idSubscripcion" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="usuario" ColumnName="usuario" />
-          <ScalarProperty Name="contraseña" ColumnName="contraseña" />
-          <ScalarProperty Name="subscripcion" ColumnName="subscripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -206,6 +206,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CoordinadorMl.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MailManager.cs" />
@@ -227,6 +230,10 @@
     </Compile>
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Record.cs" />
+    <Compile Include="Models\Secure.cs" />
+    <Compile Include="Models\Seguridad.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Subscripcion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
