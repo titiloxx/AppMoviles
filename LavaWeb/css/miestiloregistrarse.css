@@ -11,8 +11,15 @@ div.mailT.form-group{
     margin-right:28%;
     width: 70%;
 }
+
+/* negrada */
+
+hr {
+	border-top:1px solid #222;
+}
 html{
 	background:#222222;
+	margin-bottom:70px;
 }
 
 body{
