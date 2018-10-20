@@ -1,20 +1,17 @@
 ﻿@using LavaWeb.Models
 @model LoginViewModel
-@{
-    ViewBag.Title = "Iniciar sesión";
-}
 <link href="~/css/miestiloregistrarse.css" rel="stylesheet" />
+<div class="main_title our_service_area">
+    <h2 style="color: #848484;">Iniciar sesión</h2>
+</div>
 
-
-<h2>@ViewBag.Title.</h2>
 <div class="login_area">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use una cuenta local para iniciar sesión.</h4>
-                <hr />
+                
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="mailT form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -40,7 +37,8 @@
                 </div>
                 <div class="mailT form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Iniciar sesión" class="btn btn-default" />
+                        <input type="submit" class="read_more register_angkar_btn" style="border-radius: 5%;font-size: 28px;/* border: 2px; */height: auto;width: auto;border: 1px solid #ff0000;background-color: black;
+                            padding: 15px;" value="Iniciar sesión">
                     </div>
                 </div>
                 <p>
@@ -53,9 +51,5 @@
             }
         </section>
     </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
+
 </div>

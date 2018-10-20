@@ -5,6 +5,7 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
+<html>
 
 <div class="registrarse_area">
     <div class="main_title our_service_area">
@@ -12,7 +13,7 @@
     </div>
 
     @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="mailT form-group" style="width:100%;text-align:center;">
+    <div class="mailT form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-4">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
@@ -31,11 +32,12 @@
         </div>
     </div>
     <div class="">
-            <input type="submit" class="read_more register_angkar_btn" style="border-radius: 5%;font-size: 28px;/* border: 2px; */height: auto;width: auto;border: 2px solid #000000;
+        <input type="submit" class="read_more register_angkar_btn" style="border-radius: 5%;font-size: 28px;/* border: 2px; */height: auto;width: auto;border: 1px solid #ff0000;background-color: black;
         padding: 15px;" value="Registrarse" /><i class="lnr"></i>
     </div>
 
-        <a href="#" class="read_more register_angkar_btn" style="border-radius: 5%;font-size: 28px;/* border: 2px; */height: auto;width: auto;border: 2px solid #000000;
-        padding: 15px;"><i class="lnr"></i>Registrarse</a>
+    <!--<a href="#" class="read_more register_angkar_btn" style="border-radius: 5%;font-size: 28px;/* border: 2px; */height: auto;width: auto;border: 2px solid #000000;
+    padding: 15px;"><i class="lnr"></i>Registrarse</a>-->
 </div>
 }
+</html>

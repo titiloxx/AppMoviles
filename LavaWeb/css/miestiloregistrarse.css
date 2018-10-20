@@ -5,12 +5,23 @@
 	background:#222222;
 }
 
+div.mailT.form-group{
+
+	  margin-left: 28%;
+    margin-right:28%;
+    width: 70%;
+}
 html{
 	background:#222222;
 }
 
 body{
 	background:#222222;
+	text-align: center;
+}
+
+form.form-horizontal{
+margin-left: 80px;
 }
 
 .registrarse_area {
