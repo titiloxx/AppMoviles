@@ -1,0 +1,119 @@
+
+/* Price area css
+============================================================================================ */
+.registrarse_area{
+	background:#222222;
+}
+
+html{
+	background:#222222;
+}
+
+body{
+	background:#222222;
+}
+
+.registrarse_area {
+  padding: 100px 0px;
+}
+
+.registrarse_area .login_area{
+  text-align: center;
+}
+
+.registrarse_area .login_area{
+  max-width: 100%;
+}
+
+.registrarse_area .login_area{
+  padding-top: 45px;
+}
+
+.mailT {
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #f8395d;
+}
+
+/*=====================*/
+.main_title h2 {
+    color: #ff0030;
+}
+
+
+.registrarse_area .login_area{
+background-color: rgba(51, 51, 51, 1.00);
+}
+
+.content_title h2 {
+	color: #ff0030;
+}
+
+.registrarse_area .works_right_content p{
+	color: #aeaeae;
+}
+
+.ocur_service_area {
+    background-color: #322222;
+}
+
+img { /*enfoque*/
+	transition: 0.25s -webkit-filter linear;
+	filter: blur(0px);
+}
+
+img:hover { /*desenfoque*/
+	transition: 0.5s -webkit-filter linear;
+	filter: blur(4px);
+}
+
+
+.tp-bgimg.defaultimg{ /*enfoque*/
+	transition: 0.5s -webkit-filter linear;
+	filter: blur(0px);
+}
+
+.tp-bgimg.defaultimg:hover{ /*deenfoque*/
+	transition: 0.5s -webkit-filter linear;
+	filter: blur(3px);
+}
+
+.pricing_item{
+	transition: 0.5s;
+	overflow:hidden;
+}
+
+.pricing_item:hover{
+transition: 0.5s;
+border-radius: 25px 25px 25px 25px;
+-moz-border-radius: 25px 25px 25px 25px;
+-webkit-border-radius: 25px 25px 25px 25px;
+border: 0px solid #000000;
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+border-style: solid;
+-webkit-transform:scale(1.3);
+transform:scale(1.3);
+}
+
+.read_more.register_angkar_btn{
+	transition: 0.5s;
+	overflow:hidden;
+}
+
+.read_more.register_angkar_btn:hover{
+transition: 0.5s;
+border-radius: 25px 25px 25px 25px;
+-moz-border-radius: 25px 25px 25px 25px;
+-webkit-border-radius: 25px 25px 25px 25px;
+border: 0px solid #000000;
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+border-style: solid;
+-webkit-transform:scale(1.3);
+transform:scale(1.3);
+}

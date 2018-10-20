@@ -3,9 +3,11 @@
 @{
     ViewBag.Title = "Iniciar sesión";
 }
+<link href="~/css/miestiloregistrarse.css" rel="stylesheet" />
+
 
 <h2>@ViewBag.Title.</h2>
-<div class="row">
+<div class="login_area">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -14,21 +16,21 @@
                 <h4>Use una cuenta local para iniciar sesión.</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
+                <div class="mailT form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="mailT col-md-10">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="mailT form-group">
                     @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="mailT col-md-10">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="mailT form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
@@ -36,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="mailT form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Iniciar sesión" class="btn btn-default" />
                     </div>
